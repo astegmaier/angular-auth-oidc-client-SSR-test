@@ -7,7 +7,7 @@ import * as MemoryStorage from 'memorystorage';
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    constructor(@Inject(STORAGE) private _storage: IStorage, @Inject(COOKIES) private _cookies: any) {}
+    constructor(@Inject(STORAGE) private _storage: IStorage) {}
 
     getStorage() {
         return JSON.stringify(this._storage);
