@@ -15,8 +15,6 @@ export function configAuth(_oidcSecurityService: OidcSecurityService, _storage: 
     config.log_console_warning_active = true;
     config.log_console_debug_active = true;
     config.max_id_token_iat_offset_allowed_in_seconds = 10;
-    //config.override_well_known_configuration = false;
-    // config.override_well_known_configuration_url = 'something';
     _oidcSecurityService.setStorage(_storage);
     _oidcSecurityService.setupModule(config);
 }
