@@ -4,12 +4,15 @@ import { InjectionToken } from "@angular/core";
 
 export const STORAGE = new InjectionToken<IStorage>('IStorage');
 
+export const SERVER_COOKIES = new InjectionToken('ServerCookies');
+
 export function cookieStorageFactory() {
     return new CookieStorage();
 }
 
 export function memoryStorageFactory() {
-    return new MemoryStorage();
+    const myStorage = new MemoryStorage();
+    return myStorage
 }
 
 export interface IStorage {
