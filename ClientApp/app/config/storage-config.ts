@@ -7,22 +7,21 @@ export const STORAGE = new InjectionToken<IStorage>('IStorage');
 export const COOKIES = new InjectionToken('Cookies');
 
 export function cookieStorageFactory() {
-    console.log(document.cookie);
     return new CookieStorage();
 }
 
 export function memoryStorageFactory(COOKIES) {
-    let myStorage = new MemoryStorage();
+    let serverStorage = new MemoryStorage();
 
     if (COOKIES.constructor === Array) {
         COOKIES.forEach(element => {
             if (element instanceof Object && "key" in element && "value" in element) {
-                myStorage.setItem(element.key, element.value);
+                serverStorage.setItem(element.key, element.value);
             }
         });
     }
 
-    return myStorage
+    return serverStorage;
 }
 
 export interface IStorage {
