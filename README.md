@@ -1,5 +1,5 @@
 # Purpose 
-This repo is a test to see whether [angular-auth-oidc-client](https://github.com/damienbod/angular-auth-oidc-client) can work with server-side rendering (SSR). There is active discussion about how to make this happen, so I'm hoping to use this as a baseline for testing.
+This repo is a test to see whether [angular-auth-oidc-client](https://github.com/damienbod/angular-auth-oidc-client) can work with server-side rendering (SSR). There is [active discussion](https://github.com/damienbod/angular-auth-oidc-client/issues/36) about how to make this happen, so I'm hoping to use this as a baseline for testing.
 
 # Overview
 
