@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { IStorage, STORAGE, SERVER_COOKIES } from "../../config/storage-config";
+import { IStorage, STORAGE, COOKIES } from "../../config/storage-config";
 import * as MemoryStorage from 'memorystorage';
 
 @Component({
@@ -7,15 +7,13 @@ import * as MemoryStorage from 'memorystorage';
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    constructor(@Inject(STORAGE) private _storage: IStorage, @Inject(SERVER_COOKIES) private _cookies: any) {}
+    constructor(@Inject(STORAGE) private _storage: IStorage, @Inject(COOKIES) private _cookies: any) {}
 
-    createMemoryStorage() {
-        // this._storage.setItem('myKey','hellofrommy');
-        // console.log(this._storage.getItem('myKey'));
-        console.log(this._cookies);
+    getStorage() {
+        return JSON.stringify(this._storage);
     }
 
-    getCookies() {
-        return JSON.stringify(this._cookies);
+    SetACookie() {
+        this._storage.setItem("firstcookie","ANOTHER VALUE!");
     }
 }

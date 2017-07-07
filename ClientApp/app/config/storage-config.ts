@@ -4,14 +4,24 @@ import { InjectionToken } from "@angular/core";
 
 export const STORAGE = new InjectionToken<IStorage>('IStorage');
 
-export const SERVER_COOKIES = new InjectionToken('ServerCookies');
+export const COOKIES = new InjectionToken('Cookies');
 
 export function cookieStorageFactory() {
+    console.log(document.cookie);
     return new CookieStorage();
 }
 
-export function memoryStorageFactory() {
-    const myStorage = new MemoryStorage();
+export function memoryStorageFactory(COOKIES) {
+    let myStorage = new MemoryStorage();
+
+    if (COOKIES.constructor === Array) {
+        COOKIES.forEach(element => {
+            if (element instanceof Object && "key" in element && "value" in element) {
+                myStorage.setItem(element.key, element.value);
+            }
+        });
+    }
+
     return myStorage
 }
 

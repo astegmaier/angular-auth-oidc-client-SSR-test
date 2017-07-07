@@ -5,7 +5,7 @@ import { enableProdMode, ApplicationRef, NgZone, ValueProvider } from '@angular/
 import { platformDynamicServer, PlatformState, INITIAL_CONFIG } from '@angular/platform-server';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 import { AppModule } from './app/app.module.server';
-import { SERVER_COOKIES } from "./app/config/storage-config";
+import { COOKIES } from "./app/config/storage-config";
 
 enableProdMode();
 
@@ -13,7 +13,7 @@ export default createServerRenderer(params => {
     const providers = [
         { provide: INITIAL_CONFIG, useValue: { document: '<app></app>', url: params.url } },
         { provide: 'ORIGIN_URL', useValue: params.origin },
-        { provide: SERVER_COOKIES, useValue: params.data.cookies }
+        { provide: COOKIES, useValue: params.data.cookies }
     ];
 
     return platformDynamicServer(providers).bootstrapModule(AppModule).then(moduleRef => {

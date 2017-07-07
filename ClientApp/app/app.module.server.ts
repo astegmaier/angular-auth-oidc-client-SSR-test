@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
-import { memoryStorageFactory, STORAGE, SERVER_COOKIES } from "./config/storage-config";
+import { memoryStorageFactory, STORAGE, COOKIES } from "./config/storage-config";
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -11,7 +11,7 @@ import { memoryStorageFactory, STORAGE, SERVER_COOKIES } from "./config/storage-
         AppModuleShared
     ],
     providers: [
-        { provide: STORAGE, useFactory: memoryStorageFactory, deps: [SERVER_COOKIES] }
+        { provide: STORAGE, useFactory: memoryStorageFactory, deps: [COOKIES] }
     ]
 })
 export class AppModule {
