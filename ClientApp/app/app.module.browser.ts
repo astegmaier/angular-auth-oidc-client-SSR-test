@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
-import { cookieStorageFactory, STORAGE, COOKIES } from "./config/storage-config";
+import { cookieStorageFactory, STORAGE, COOKIES, IStorage } from "./config/storage-config";
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { configAuth } from "./config/auth-config";
 
 
 @NgModule({
@@ -18,4 +20,7 @@ import { cookieStorageFactory, STORAGE, COOKIES } from "./config/storage-config"
     ]
 })
 export class AppModule {
+    constructor(private _oidcSecurityService: OidcSecurityService, @Inject(STORAGE) private _storage: IStorage) {
+        configAuth(_oidcSecurityService, _storage);
+    }
 }
