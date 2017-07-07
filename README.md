@@ -3,7 +3,7 @@ This repo is a test to see whether [angular-auth-oidc-client](https://github.com
 
 # Overview
 
-The basic SSR template is from [Mark Piezak](https://github.com/aspnet/JavaScriptServices), and enhanced it with a few extra things:
+The basic SSR template is from Mark Piezak's [JavaScript Services repo](https://github.com/aspnet/JavaScriptServices), and enhanced it with a few extra things:
 
 - a storage service that is injected with different implementations for client-side rendering and server-side rendering (see [storage-config.ts](https://github.com/astegmaier/angular-auth-oidc-client-SSR-test/blob/master/ClientApp/app/config/storage-config.ts) for details)
     - the client-side implementation uses bouzuya's [cookie-storage](https://github.com/bouzuya/cookie-storage) so that tokens end up getting saved as cookies that get passed up to the server.
