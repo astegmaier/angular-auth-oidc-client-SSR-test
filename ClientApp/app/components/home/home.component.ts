@@ -42,4 +42,8 @@ export class HomeComponent {
     checkToken() {
         console.log(this.oidcSecurityService.getToken());
     }
+    
+    checkUserInfo() {
+        console.log(this.oidcSecurityService.getUserData());
+    }
 }
