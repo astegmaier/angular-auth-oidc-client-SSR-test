@@ -3,9 +3,9 @@ import { IStorage } from "./storage-config";
 
 export function configAuth(_oidcSecurityService: OidcSecurityService, _storage: IStorage) {
     let config = new OpenIDImplicitFlowConfiguration();
-    config.stsServer = 'https://login.microsoftonline.com/saleslists.onmicrosoft.com/v2.0';
+    config.stsServer = 'http://localhost:5050';
     config.redirect_url = 'http://localhost:5000';
-    config.client_id = '9d013e00-91df-487f-b260-c33e77dfb844';
+    config.client_id = 'angularclient';
     config.response_type = 'id_token';
     config.scope = 'openid profile email';
     config.post_logout_redirect_uri = 'http://localhost:5000/Unauthorized';

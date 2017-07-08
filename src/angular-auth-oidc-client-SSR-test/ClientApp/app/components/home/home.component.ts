@@ -9,37 +9,35 @@ import { OidcSecurityService } from "angular-auth-oidc-client";
 })
 export class HomeComponent {
     constructor(public oidcSecurityService: OidcSecurityService, @Inject(STORAGE) private _storage: IStorage) {}
-
-    getStorage() {
-        return JSON.stringify(this._storage);
-    }
-
-    SetACookie() {
-        this._storage.setItem("firstcookie","ANOTHER VALUE!");
-    }
-    
     ngOnInit() {
         if (window.location.hash) {
             this.oidcSecurityService.authorizedCallback();
         }
     }
-
+    getStorage() {
+        return JSON.stringify(this._storage);
+    }
+    SetACookie() {
+        this._storage.setItem("firstcookie","ANOTHER VALUE!");
+    }
     login() {
         console.log('start login');
         this.oidcSecurityService.authorize();
     }
-
     refreshSession() {
         console.log('start refreshSession');
         this.oidcSecurityService.authorize();
     }
-
     logout() {
         console.log('start logoff');
         this.oidcSecurityService.logoff();
     }
-
     checkToken() {
+        console.log('auth token from getToken():');
         console.log(this.oidcSecurityService.getToken());
+    }
+    checkUserData() {
+        console.log('User info from getUserData():');
+        console.log(this.oidcSecurityService.getUserData());
     }
 }

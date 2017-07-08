@@ -105,17 +105,19 @@ namespace QuickstartIdentityServer
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = new List<string>
                     {
-                        "https://localhost:44311"
+                        "https://localhost:5000",
+                        "http://localhost:5000"
 
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "https://localhost:44311/unauthorized"
+                        "https://localhost:5000/unauthorized",
+                        "http://localhost:5000/unauthorized"
                     },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44311",
-                        "http://localhost:44311"
+                        "https://localhost:5000",
+                        "http://localhost:5000"
                     },
                     AllowedScopes = new List<string>
                     {
