@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0F6C07F-188D-4F86-B43F-4A3EAD0D2C30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68FE7151-CB27-498E-8FC3-DB0EB76BED8A}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerWithIdentitySQLite", "src\IdentityServerWithIdentitySQLite\IdentityServerWithIdentitySQLite.csproj", "{1ECB5581-FFA5-4C11-A491-C85ABD962033}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "debug-test", "src\angular-auth-oidc-client-SSR-test\debug-test.csproj", "{A5FD6E3D-73CD-4BEB-905F-35D38AFB424A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1ECB5581-FFA5-4C11-A491-C85ABD962033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ECB5581-FFA5-4C11-A491-C85ABD962033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ECB5581-FFA5-4C11-A491-C85ABD962033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ECB5581-FFA5-4C11-A491-C85ABD962033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FD6E3D-73CD-4BEB-905F-35D38AFB424A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FD6E3D-73CD-4BEB-905F-35D38AFB424A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FD6E3D-73CD-4BEB-905F-35D38AFB424A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FD6E3D-73CD-4BEB-905F-35D38AFB424A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1ECB5581-FFA5-4C11-A491-C85ABD962033} = {A0F6C07F-188D-4F86-B43F-4A3EAD0D2C30}
+		{A5FD6E3D-73CD-4BEB-905F-35D38AFB424A} = {A0F6C07F-188D-4F86-B43F-4A3EAD0D2C30}
+	EndGlobalSection
+EndGlobal
