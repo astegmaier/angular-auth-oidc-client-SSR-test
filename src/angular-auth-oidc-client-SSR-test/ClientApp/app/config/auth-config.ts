@@ -3,7 +3,7 @@ import { IStorage } from "./storage-config";
 
 export function configAuth(_oidcSecurityService: OidcSecurityService, _storage: IStorage) {
     let config = new OpenIDImplicitFlowConfiguration();
-    config.stsServer = 'https://saleslists.onmicrosoft.com';
+    config.stsServer = 'http://localhost:7950';
     config.redirect_url = 'http://localhost:5000';
     config.client_id = '9d013e00-91df-487f-b260-c33e77dfb844';
     config.response_type = 'id_token token';
