@@ -16,7 +16,7 @@
     "@angular/platform-server": "4.1.2",
     "@angular/router": "4.1.2",
     "@types/node": "7.0.18",
-    "angular-auth-oidc-client": "^1.1.4",
+    "angular-auth-oidc-client": "^1.2.0",
     "angular2-template-loader": "0.6.2",
     "aspnet-prerendering": "^2.0.5",
     "aspnet-webpack": "^1.0.29",
