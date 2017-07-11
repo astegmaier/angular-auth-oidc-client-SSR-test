@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
     selector: 'app',
@@ -6,4 +7,7 @@ import { Component, Inject } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+    constructor(private oidcSecurityService: OidcSecurityService) {}
+
 }

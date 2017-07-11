@@ -1,36 +1,44 @@
 import { CookieStorage } from 'cookie-storage';
 import * as MemoryStorage from 'memorystorage';
-import { InjectionToken } from "@angular/core";
-
-export const STORAGE = new InjectionToken<IStorage>('IStorage');
+import { InjectionToken, Injectable, Inject } from "@angular/core";
+import { OidcSecurityStorage } from 'angular-auth-oidc-client';
 
 export const COOKIES = new InjectionToken('Cookies');
 
-export function cookieStorageFactory() {
-    return new CookieStorage();
+@Injectable()
+export class OidcStorageCookies implements OidcSecurityStorage {
+    private _cookies = new CookieStorage()
+    
+    public read(key: string): any {
+        let value = this._cookies.getItem(key);
+        if (value) {
+            return JSON.parse(value);
+        }
+    }
+    public write(key: string, value: string): void {
+        this._cookies.setItem(key, JSON.stringify(value));
+    }
 }
 
-export function memoryStorageFactory(COOKIES) {
-    let serverStorage = new MemoryStorage();
+@Injectable()
+export class OidcStorageServer implements OidcSecurityStorage {
+    private _dict = new Map<string, any>();
 
-    if (COOKIES.constructor === Array) {
-        COOKIES.forEach(element => {
+    constructor(@Inject(COOKIES) private _cookies: Array<any>) {
+        _cookies.forEach(element => {
             if (element instanceof Object && "key" in element && "value" in element) {
-                serverStorage.setItem(element.key, element.value);
+                this._dict.set(element.key, element.value);
             }
         });
     }
-
-    return serverStorage;
-}
-
-export interface IStorage {
-    readonly length: number;
-    clear(): void;
-    getItem(key: string): string | null;
-    key(index: number): string | null;
-    removeItem(key: string): void;
-    setItem(key: string, data: string): void;
-    [key: string]: any;
-    [index: number]: string;
+    
+    public read(key: string): any {
+        let value = this._dict.get(key);
+        if (value) {
+            return JSON.parse(value);
+        }
+    }
+    public write(key: string, value: string): void {
+        this._dict.set(key, JSON.stringify(value));
+    }
 }

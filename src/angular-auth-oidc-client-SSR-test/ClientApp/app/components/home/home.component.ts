@@ -1,24 +1,47 @@
 import { Component, Inject } from '@angular/core';
-import { IStorage, STORAGE, COOKIES } from "../../config/storage-config";
 import * as MemoryStorage from 'memorystorage';
+<<<<<<< HEAD
 import { OidcSecurityService } from "angular-auth-oidc-client";
+=======
+import { OidcSecurityService} from 'angular-auth-oidc-client';
+>>>>>>> 35f3e9ea8f79223611aecbf8b74266f5294b1f0a
 
 @Component({
     selector: 'home',
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    constructor(public oidcSecurityService: OidcSecurityService, @Inject(STORAGE) private _storage: IStorage) {}
+    public authToken: string;
+    public userInfo: string;
+    
+    constructor(private oidcSecurityService: OidcSecurityService) { }
+
     ngOnInit() {
-        if (window.location.hash) {
+        if (typeof location !== "undefined" && window.location.hash) {
             this.oidcSecurityService.authorizedCallback();
         }
+        setTimeout(() => {
+            this.checkToken();
+            this.checkUserInfo();
+        }, 0);
     }
-    getStorage() {
-        return JSON.stringify(this._storage);
+    
+    login() {
+        console.log('start login');
+        this.oidcSecurityService.authorize();
     }
-    SetACookie() {
-        this._storage.setItem("firstcookie","ANOTHER VALUE!");
+
+    logout() {
+        console.log('start logoff');
+        this.oidcSecurityService.logoff();
+    }
+
+    checkToken() {
+        this.authToken = JSON.stringify(this.oidcSecurityService.getToken());
+    }
+    
+    checkUserInfo() {
+        this.userInfo = JSON.stringify(this.oidcSecurityService.getUserData());
     }
     login() {
         console.log('start login');
