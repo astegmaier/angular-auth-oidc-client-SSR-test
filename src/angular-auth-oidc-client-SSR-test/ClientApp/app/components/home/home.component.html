@@ -3,22 +3,22 @@
 
 <h2>Testing Tools</h2>
 
-<p>1. The button below should set a cookie.</p>
-
-<p><button (click)="SetACookie()">Set a Cookie!</button></p>
-
-<p>2. Below, you should see a printout of the storage object, which should show all the JavaScript accessible cookies. This should work even if you turn JavaScript off (because it will get renered by the server):</p>
-
-<p> {{getStorage()}}</p>
-
-<p>3. Try logging in using angular-auth-oidc-client:</p>
+<p>1. Try logging in using angular-auth-oidc-client:</p>
 
 <p><button (click)="login()">Log In!</button></p>
 
-<p>4. Log the access token to the console:</p>
+<p>2. Try logging out using angular-auth-oidc-client:</p>
 
-<p><button (click)="checkToken()">Check Token!</button></p>
+<p><button (click)="logout()">Log Out!</button></p>
 
-<p>5. Log user info to the console:</p>
+<p>3. Display access token from angular-auth-oidc-client :</p>
 
-<p><button (click)="checkUserData()">Check User Data!</button></p>
+<p><button (click)="checkToken()">Update Access Token!</button></p>
+
+<p>{{authToken}}</p>
+
+<p>4. Display UserInfo from angular-auth-oidc-client:</p>
+
+<p><button (click)="checkUserInfo()">Update User Info!</button></p>
+
+<p>{{userInfo}}</p>
