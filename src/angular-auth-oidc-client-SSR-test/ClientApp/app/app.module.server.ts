@@ -2,22 +2,20 @@ import { NgModule, Inject } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
-import { memoryStorageFactory, STORAGE, COOKIES, IStorage } from "./config/storage-config";
-import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { COOKIES, OidcStorageServer } from "./config/storage-config";
+import { OidcSecurityService, AuthModule, OidcSecurityStorage } from 'angular-auth-oidc-client';
 import { configAuth } from "./config/auth-config";
 
 @NgModule({
     bootstrap: [ AppComponent ],
     imports: [
         ServerModule,
-        AppModuleShared
-    ],
-    providers: [
-        { provide: STORAGE, useFactory: memoryStorageFactory, deps: [COOKIES] }
+        AppModuleShared,
+        AuthModule.forRoot({storage: OidcStorageServer})
     ]
 })
 export class AppModule {
-    constructor(private _oidcSecurityService: OidcSecurityService, @Inject(STORAGE) private _storage: IStorage) {
-        configAuth(_oidcSecurityService, _storage);
+    constructor(private _oidcSecurityService: OidcSecurityService) {
+        configAuth(_oidcSecurityService);
     }
 }

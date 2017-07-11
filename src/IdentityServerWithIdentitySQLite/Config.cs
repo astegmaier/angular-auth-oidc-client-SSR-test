@@ -14,9 +14,7 @@ namespace QuickstartIdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email(), 
-                new IdentityResource("dataeventrecordsscope",new []{ "role", "admin", "user", "dataEventRecords", "dataEventRecords.admin" , "dataEventRecords.user" } ),
-                new IdentityResource("securedfilesscope",new []{ "role", "admin", "user", "securedFiles", "securedFiles.admin", "securedFiles.user"} )
+                new IdentityResources.Email()
             };
         }
 
@@ -24,38 +22,6 @@ namespace QuickstartIdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("dataEventRecords")
-                {
-                    ApiSecrets =
-                    {
-                        new Secret("dataEventRecordsSecret".Sha256())
-                    },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "dataeventrecordsscope",
-                            DisplayName = "Scope for the dataEventRecords ApiResource"
-                        }
-                    },
-                    UserClaims = { "role", "admin", "user", "dataEventRecords", "dataEventRecords.admin", "dataEventRecords.user" }
-                },
-                new ApiResource("securedFiles")
-                {
-                    ApiSecrets =
-                    {
-                        new Secret("securedFilesSecret".Sha256())
-                    },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "securedfilesscope",
-                            DisplayName = "Scope for the securedFiles ApiResource"
-                        }
-                    },
-                    UserClaims = { "role", "admin", "user", "securedFiles", "securedFiles.admin", "securedFiles.user" }
-                }
             };
         }
 
@@ -67,65 +33,30 @@ namespace QuickstartIdentityServer
             {
                 new Client
                 {
-                    ClientName = "angularjsclient",
-                    ClientId = "angularjsclient",
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
-                    RedirectUris = new List<string>
-                    {
-                        "https://localhost:44376/authorized"
-                    },
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        "https://localhost:44346/unauthorized.html"
-                    },
-                    AllowedCorsOrigins = new List<string>
-                    {
-                        "https://localhost:44346"
-                    },
-                    AllowedScopes = new List<string>
-                    {
-                        "openid",
-                        "email",
-                        "profile",
-                        "dataEventRecords",
-                        "dataeventrecordsscope",
-                        "securedFiles",
-                        "securedfilesscope",
-                    }
-                },
-                new Client
-                {
-                    ClientName = "angularclient",
-                    ClientId = "angularclient",
+                    ClientName = "9d013e00-91df-487f-b260-c33e77dfb844",
+                    ClientId = "9d013e00-91df-487f-b260-c33e77dfb844",
                     AccessTokenType = AccessTokenType.Reference,
-                    AccessTokenLifetime = 15,// 120 seconds, default 60 minutes
-                    IdentityTokenLifetime = 5,
+                    AccessTokenLifetime = 3600,// 120 seconds, default 60 minutes
+                    IdentityTokenLifetime = 300,
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = new List<string>
                     {
-                        "https://localhost:5000",
                         "http://localhost:5000"
 
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "https://localhost:5000/unauthorized",
                         "http://localhost:5000/unauthorized"
                     },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:5000",
-                        "http://localhost:5000"
+                        "http://localhost:5000",
+                        "https://localhost:5000"
                     },
                     AllowedScopes = new List<string>
                     {
                         "openid",
-                        "dataEventRecords",
-                        "dataeventrecordsscope",
-                        "securedFiles",
-                        "securedfilesscope",
                         "role",
                         "profile",
                         "email"

@@ -1,3 +1,5 @@
 src/IdentityServerWithIdentitySQLite/obj
 src/IdentityServerWithIdentitySQLite/bin
 .vs
+src/angular-auth-oidc-client-SSR-test/ClientApp/**/*.js.map
+src/angular-auth-oidc-client-SSR-test/ClientApp/app/**/*.js

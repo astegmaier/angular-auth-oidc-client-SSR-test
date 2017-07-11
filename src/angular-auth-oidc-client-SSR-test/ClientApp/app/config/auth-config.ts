@@ -1,9 +1,8 @@
-import { OpenIDImplicitFlowConfiguration, OidcSecurityService } from 'angular-auth-oidc-client';
-import { IStorage } from "./storage-config";
+import { OpenIDImplicitFlowConfiguration, OidcSecurityService} from 'angular-auth-oidc-client';
 
-export function configAuth(_oidcSecurityService: OidcSecurityService, _storage: IStorage) {
+export function configAuth(_oidcSecurityService: OidcSecurityService) {
     let config = new OpenIDImplicitFlowConfiguration();
-    config.stsServer = 'http://localhost:5050';
+    config.stsServer = 'http://localhost:7950';
     config.redirect_url = 'http://localhost:5000';
     config.client_id = 'angularclient';
     config.response_type = 'id_token';
@@ -15,6 +14,5 @@ export function configAuth(_oidcSecurityService: OidcSecurityService, _storage: 
     config.log_console_warning_active = true;
     config.log_console_debug_active = true;
     config.max_id_token_iat_offset_allowed_in_seconds = 10;
-    _oidcSecurityService.setStorage(_storage);
     _oidcSecurityService.setupModule(config);
 }
