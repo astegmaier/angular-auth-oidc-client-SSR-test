@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import * as MemoryStorage from 'memorystorage';
 import { OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
@@ -16,10 +15,10 @@ export class HomeComponent {
         if (typeof location !== "undefined" && window.location.hash) {
             this.oidcSecurityService.authorizedCallback();
         }
-        setTimeout(() => {
+        this.oidcSecurityService.onUserDataLoaded.subscribe(() => {
             this.checkToken();
             this.checkUserInfo();
-        }, 0);
+        });
     }
     
     login() {
