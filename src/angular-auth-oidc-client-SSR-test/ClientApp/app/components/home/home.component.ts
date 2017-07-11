@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { IStorage, STORAGE, COOKIES } from "../../config/storage-config";
 import * as MemoryStorage from 'memorystorage';
 import { OidcSecurityService} from 'angular-auth-oidc-client';
 
@@ -11,7 +10,7 @@ export class HomeComponent {
     public authToken: string;
     public userInfo: string;
     
-    constructor(@Inject(STORAGE) private _storage: IStorage, private oidcSecurityService: OidcSecurityService) { }
+    constructor(private oidcSecurityService: OidcSecurityService) { }
 
     ngOnInit() {
         if (typeof location !== "undefined" && window.location.hash) {
@@ -22,15 +21,7 @@ export class HomeComponent {
             this.checkUserInfo();
         }, 0);
     }
-
-    getStorage() {
-        return JSON.stringify(this._storage);
-    }
-
-    SetACookie() {
-        this._storage.setItem("firstcookie","ANOTHER VALUE!");
-    }
-
+    
     login() {
         console.log('start login');
         this.oidcSecurityService.authorize();
