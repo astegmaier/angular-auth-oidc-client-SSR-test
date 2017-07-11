@@ -10,9 +10,4 @@ export class AppComponent {
 
     constructor(private oidcSecurityService: OidcSecurityService) {}
 
-    ngOnInit() {
-        if (typeof location !== "undefined" && window.location.hash) {
-            this.oidcSecurityService.authorizedCallback();
-        }
-    }
 }
