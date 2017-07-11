@@ -16,9 +16,9 @@ export class HomeComponent {
             this.oidcSecurityService.authorizedCallback();
         }
         this.oidcSecurityService.onUserDataLoaded.subscribe(() => {
-            this.checkToken();
             this.checkUserInfo();
         });
+        this.checkToken();
     }
     
     login() {
