@@ -1,5 +1,4 @@
 import { CookieStorage } from 'cookie-storage';
-import * as MemoryStorage from 'memorystorage';
 import { InjectionToken, Injectable, Inject } from "@angular/core";
 import { OidcSecurityStorage } from 'angular-auth-oidc-client';
 
