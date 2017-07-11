@@ -19,10 +19,14 @@
 
 <p><button (click)="logout()">Log Out!</button></p>
 
-<p>5. Log user info from angular-auth-oidc-client to the console:</p>
+<p>5. Display access token from angular-auth-oidc-client :</p>
 
-<p><button (click)="checkUserInfo()">Check User Info!</button></p>
+<p><button (click)="checkToken()">Update Access Token!</button></p>
 
-<p>5. Log access token from angular-auth-oidc-client to the console:</p>
+<p>{{authToken}}</p>
 
-<p><button (click)="checkToken()">Check Access Token!</button></p>
+<p>6. Display UserInfo from angular-auth-oidc-client:</p>
+
+<p><button (click)="checkUserInfo()">Update User Info!</button></p>
+
+<p>{{userInfo}}</p>

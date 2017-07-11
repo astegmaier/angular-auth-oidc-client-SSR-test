@@ -8,7 +8,20 @@ import { OidcSecurityService} from 'angular-auth-oidc-client';
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    constructor(@Inject(STORAGE) private _storage: IStorage, private oidcSecurityService: OidcSecurityService) {}
+    public authToken: string;
+    public userInfo: string;
+    
+    constructor(@Inject(STORAGE) private _storage: IStorage, private oidcSecurityService: OidcSecurityService) { }
+
+    ngOnInit() {
+        if (typeof location !== "undefined" && window.location.hash) {
+            this.oidcSecurityService.authorizedCallback();
+        }
+        setTimeout(() => {
+            this.checkToken();
+            this.checkUserInfo();
+        }, 0);
+    }
 
     getStorage() {
         return JSON.stringify(this._storage);
@@ -29,10 +42,10 @@ export class HomeComponent {
     }
 
     checkToken() {
-        console.log(this.oidcSecurityService.getToken());
+        this.authToken = JSON.stringify(this.oidcSecurityService.getToken());
     }
     
     checkUserInfo() {
-        console.log(this.oidcSecurityService.getUserData());
+        this.userInfo = JSON.stringify(this.oidcSecurityService.getUserData());
     }
 }

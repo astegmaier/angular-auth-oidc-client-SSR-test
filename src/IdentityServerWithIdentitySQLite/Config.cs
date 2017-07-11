@@ -36,8 +36,8 @@ namespace QuickstartIdentityServer
                     ClientName = "9d013e00-91df-487f-b260-c33e77dfb844",
                     ClientId = "9d013e00-91df-487f-b260-c33e77dfb844",
                     AccessTokenType = AccessTokenType.Reference,
-                    AccessTokenLifetime = 15,// 120 seconds, default 60 minutes
-                    IdentityTokenLifetime = 5,
+                    AccessTokenLifetime = 3600,// 120 seconds, default 60 minutes
+                    IdentityTokenLifetime = 300,
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = new List<string>
