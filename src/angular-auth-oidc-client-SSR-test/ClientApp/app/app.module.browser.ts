@@ -14,6 +14,7 @@ import { CookieStorage } from "cookie-storage";
         BrowserModule,
         AppModuleShared,
         AuthModule.forRoot({storage: OidcStorageCookies})
+        // AuthModule.forRoot()
     ],
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin }

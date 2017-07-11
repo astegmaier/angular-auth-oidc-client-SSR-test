@@ -4,8 +4,8 @@ export function configAuth(_oidcSecurityService: OidcSecurityService) {
     let config = new OpenIDImplicitFlowConfiguration();
     config.stsServer = 'http://localhost:7950';
     config.redirect_url = 'http://localhost:5000';
-    config.client_id = 'angularclient';
-    config.response_type = 'id_token';
+    config.client_id = '9d013e00-91df-487f-b260-c33e77dfb844';
+    config.response_type = 'id_token token';
     config.scope = 'openid profile email';
     config.post_logout_redirect_uri = 'http://localhost:5000/Unauthorized';
     config.startup_route = '/home';
