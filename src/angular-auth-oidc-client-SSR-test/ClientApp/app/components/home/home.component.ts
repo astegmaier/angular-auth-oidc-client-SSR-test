@@ -8,6 +8,7 @@ import { OidcSecurityService} from 'angular-auth-oidc-client';
 export class HomeComponent {
     public authToken: string;
     public userInfo: string;
+    public authorized: boolean;
     
     constructor(private oidcSecurityService: OidcSecurityService) { }
 
@@ -17,6 +18,7 @@ export class HomeComponent {
         }
         this.oidcSecurityService.onUserDataLoaded.subscribe(() => {
             this.checkUserInfo();
+            this.authorized = this.oidcSecurityService.isAuthorized;
         });
         this.checkToken();
     }
