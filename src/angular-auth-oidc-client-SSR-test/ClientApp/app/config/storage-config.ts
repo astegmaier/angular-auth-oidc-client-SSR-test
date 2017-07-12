@@ -6,6 +6,8 @@ export const COOKIES = new InjectionToken('Cookies');
 
 @Injectable()
 export class OidcStorageCookies implements OidcSecurityStorage {
+    //in production, you should be sure to mark the cookies as "secure" so they are only sent over https
+    //like this: private _cookies = new CookieStorage({secure: true})
     private _cookies = new CookieStorage()
     
     public read(key: string): any {
